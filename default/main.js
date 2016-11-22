@@ -22,7 +22,7 @@ module.exports.loop = function () {
     //         tower.attack(closestHostile);
     //     }
     // }
-    var base = baseInfo.init("SimBase");
+    var base = baseInfo.init(Object.keys(Game.spawns)[0]);
     var room = base.room
 
     //  Get room info
