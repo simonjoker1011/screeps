@@ -1,5 +1,5 @@
 
-var startTimeTick
+
 
 function log(input,boolean) {
         if (boolean && typeof(boolean) == 'boolean') {
@@ -12,15 +12,11 @@ function log(input,boolean) {
 var logging = {
     log: function (input,boolean,frequency){
 
-        if (frequency == null) {
-            startTimeTick = null;
+        if (frequency == null) {            
             log(input,boolean);
-        }else{
-            startTimeTick = Game.time
-            if((Game.time - startTimeTick)%frequency==0){
-                log(input,boolean);
-            }
-        }
+        }else if(Game.time%frequency==0){
+            log(input,boolean);            
+        }        
     }
 };
 

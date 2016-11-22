@@ -1,6 +1,5 @@
 var logging = require('./logging');
 
-
 var roleHarvester = require('./role.harvester');
 var roleUpgrader = require('./role.upgrader');
 var roleBuilder = require('./role.builder');
@@ -8,7 +7,7 @@ var roomInfo = require('./room.info');
 var baseInfo = require('./base.info');
 
 module.exports.loop = function () {
-    logging.log(Game.time,true);
+    logging.log(Game.time,true,10);
     // var tower = Game.getObjectById('b431b9002e0e599b8e1af8e3');
     // if(tower) {
     //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
