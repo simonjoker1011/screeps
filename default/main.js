@@ -1,9 +1,12 @@
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
+var roleHarvester = require('./role.harvester');
+var roleUpgrader = require('./role.upgrader');
+var roleBuilder = require('./role.builder');
+
+console.log("first")
+
 
 module.exports.loop = function () {
-
+    console.log(Game.time);
     // var tower = Game.getObjectById('b431b9002e0e599b8e1af8e3');
     // if(tower) {
     //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
