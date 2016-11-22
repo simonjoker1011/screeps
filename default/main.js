@@ -21,7 +21,7 @@ module.exports.loop = function () {
     //         tower.attack(closestHostile);
     //     }
     // }
-    var base = baseInfo.init("Spawn1");
+    var base = baseInfo.init("SimBase");
     var room = base.room
 
     //  Get room info

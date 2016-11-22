@@ -7,31 +7,36 @@ function clearDeadCreeps(){
         
         if(!Game.creeps[name]) {
             delete Memory.creeps[name];
-            console.log('Clearing non-existing creep memory:', name);
+            logging.log('Clearing non-existing creep memory: '+name,true);
         }
     }
 }
 
-function harvestersNo(no){
+function keepCreepsNo(creepType, no){
     if (typeof(no) != 'number') {
         logging.log("NaN",true)
         return null;
     }
 
-    var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    // var harvesters = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvester');
+    var baseCreeps = _.filter(Game.creeps, (creep) => creep.memory.role == creepType);
 
-    if(harvesters.length < no) {
-        var newName = Game.spawns[baseName].createCreep([WORK,CARRY,MOVE], undefined, {role: 'harvester'});
-        logging.log('Spawning new harvester: ' + newName,true);
+    if(baseCreeps.length < no) {
+        var newName = Game.spawns[baseName].createCreep([WORK,CARRY,MOVE], undefined, {role: creepType});
+
+        logging.log('Spawning new creep, Name: '+newName+" Type: "+creepType,true);
     }
-
 }
 
 var baseInfo = {
     init: function(name) {
         baseName = name
         clearDeadCreeps();
-        harvestersNo(3);
+        
+        keepCreepsNo('harvester', 2);
+        keepCreepsNo('upgrader', 1);
+        keepCreepsNo('builder', 1);
+
         return Game.spawns[baseName];
     }
 };
