@@ -1,12 +1,14 @@
+var logging = require('./logging');
+
+
 var roleHarvester = require('./role.harvester');
 var roleUpgrader = require('./role.upgrader');
 var roleBuilder = require('./role.builder');
 var roomInfo = require('./room.info');
 var baseInfo = require('./base.info');
-var logging = require('./logging');
 
 module.exports.loop = function () {
-    logging.log(Game.time,true);
+    logging.log(Game.time,false);
     // var tower = Game.getObjectById('b431b9002e0e599b8e1af8e3');
     // if(tower) {
     //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -30,7 +32,7 @@ module.exports.loop = function () {
 
     for(var name in Game.creeps) {        
         
-        Game.creeps[name].say(Game.creeps[name].memory.role)    
+        // Game.creeps[name].say(Game.creeps[name].memory.role)    
         
         var creep = Game.creeps[name];
 

@@ -22,9 +22,12 @@ function keepCreepsNo(creepType, no){
     var baseCreeps = _.filter(Game.creeps, (creep) => creep.memory.role == creepType);
 
     if(baseCreeps.length < no) {
-        var newName = Game.spawns[baseName].createCreep([WORK,CARRY,MOVE], undefined, {role: creepType});
+        
+        // move:50  work:100    carry:50    attack:80   rang_att:150    heal:250    claim:600   tough:10
 
-        logging.log('Spawning new creep, Name: '+newName+" Type: "+creepType,true);
+        var newName = Game.spawns[baseName].createCreep([WORK,CARRY,MOVE], undefined, {role: creepType}); //cost 200
+
+        logging.log('Spawning new creep, Name: '+newName+" Type: "+creepType, false);
     }
 }
 
