@@ -4,7 +4,8 @@ var roomSource = [];
 
 var roomInfo = {
     fetchInfo: function(room) {                
-        roomSource = room.find(FIND_SOURCES);        
+        roomSource = room.find(FIND_SOURCES); 
+        return roomSource;       
         logging.log(roomSource,false);
     }
 };

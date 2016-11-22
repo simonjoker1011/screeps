@@ -2,9 +2,11 @@ var roleHarvester = require('./role.harvester');
 var roleUpgrader = require('./role.upgrader');
 var roleBuilder = require('./role.builder');
 var roomInfo = require('./room.info');
+var baseInfo = require('./base.info');
+var logging = require('./logging');
 
 module.exports.loop = function () {
-    console.log(Game.time);
+    logging.log(Game.time,true);
     // var tower = Game.getObjectById('b431b9002e0e599b8e1af8e3');
     // if(tower) {
     //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
@@ -19,30 +21,19 @@ module.exports.loop = function () {
     //         tower.attack(closestHostile);
     //     }
     // }
-    var base = Game.spawns.Spawn1
-
+    var base = baseInfo.init("Spawn1");
     var room = base.room
-
-    var isBaseFull
-    if(base.energy >= base.energyCapacity){
-        isBaseFull = true
-    }
 
     //  Get room info
     var ri = roomInfo.fetchInfo(room);
+    logging.log(ri,false);
 
-    //  Get creeps info
-    for(var name in Game.creeps) {
-        // Game.creeps[name].say(Game.creeps[name].memory.role)
-        // if(isBaseFull){
-        //     Game.creeps[name].say('Base is full')    
-        // }else{
-        //     Game.creeps[name].say(name+': '+Game.creeps[name].memory.role)    
-        // }
+    for(var name in Game.creeps) {        
         
         Game.creeps[name].say(Game.creeps[name].memory.role)    
         
         var creep = Game.creeps[name];
+
         if(creep.memory.role == 'harvester') {
             roleHarvester.run(creep);
         }
