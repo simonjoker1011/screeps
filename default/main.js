@@ -1,9 +1,7 @@
 var roleHarvester = require('./role.harvester');
 var roleUpgrader = require('./role.upgrader');
 var roleBuilder = require('./role.builder');
-
-console.log("first")
-
+var roomInfo = require('./room.info');
 
 module.exports.loop = function () {
     console.log(Game.time);
@@ -22,11 +20,18 @@ module.exports.loop = function () {
     //     }
     // }
     var base = Game.spawns.Spawn1
+
+    var room = base.room
+
     var isBaseFull
     if(base.energy >= base.energyCapacity){
         isBaseFull = true
     }
 
+    //  Get room info
+    var ri = roomInfo.fetchInfo(room);
+
+    //  Get creeps info
     for(var name in Game.creeps) {
         // Game.creeps[name].say(Game.creeps[name].memory.role)
         // if(isBaseFull){
