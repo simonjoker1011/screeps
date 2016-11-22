@@ -8,7 +8,7 @@ var roomInfo = require('./room.info');
 var baseInfo = require('./base.info');
 
 module.exports.loop = function () {
-    logging.log(Game.time,false);
+    logging.log(Game.time,true);
     // var tower = Game.getObjectById('b431b9002e0e599b8e1af8e3');
     // if(tower) {
     //     var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
